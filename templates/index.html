@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Le Bistrot Gourmet - Flask</title>
+  <!-- Les fichiers statiques (CSS) sont appelés via url_for -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">🍴 Le Bistrot Gourmet (Flask)</div>
+    <div>Panier 🛒 <span id="cartCount">0</span></div>
+  </header>
+
+  <div class="main-layout">
+    <section>
+      <h2>La Carte</h2>
+      <div id="menuContainer" class="menu-grid"></div>
+    </section>
+
+    <aside class="cart-section">
+      <h2>Votre Commande</h2>
+      <div id="cartItems">Panier vide</div>
+      <div class="cart-total">Total : <strong id="cartTotal">0.00 €</strong></div>
+      <form id="orderForm" onsubmit="submitOrder(event)">
+        <input type="text" id="customerName" placeholder="Votre Nom" required>
+        <input type="tel" id="customerPhone" placeholder="Téléphone" required>
+        <button type="submit" id="btnSubmit" disabled>Valider la commande</button>
+      </form>
+      <div id="orderNotification" class="notification"></div>
+    </aside>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
